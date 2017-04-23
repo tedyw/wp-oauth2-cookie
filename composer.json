@@ -1,3 +1,8 @@
 {
-  "name": "tedyw/wp-oauth2-cookie"
+  "name": "tedyw/wp-oauth2-cookie",
+  "description": "Retrieves oauth2 access token on wordpress logon.",
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "~1.0"
+  }
 }
