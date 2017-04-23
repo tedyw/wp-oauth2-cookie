@@ -32,7 +32,7 @@ function wp_oauth2_cookie_login_redirect( $redirect_to, $request, $user ) {
 
 function wp_oauth2_cookie_remove_logout() {
     $client_name = sanitize_title(get_option('wp_oauth2_cookie_client_name').'-access-token');
-    setcookie($client_name, "expired", time() - 3600, '/', $_SERVER['HTTP_HOST'], 0, 0);
+    setcookie($client_name, "expired", time() - 3600, '/', '.' . get_option('wp_oauth2_cookie_domain'), 0, 0);
     wp_logout();
 }
 

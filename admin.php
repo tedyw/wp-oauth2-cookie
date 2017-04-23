@@ -28,6 +28,7 @@ dashicons-admin-network');
         register_setting('wp_oauth2_cookie-settings-group', 'wp_oauth2_cookie_client_name');
         register_setting('wp_oauth2_cookie-settings-group', 'wp_oauth2_cookie_client_id');
         register_setting('wp_oauth2_cookie-settings-group', 'wp_oauth2_cookie_client_secret');
+        register_setting('wp_oauth2_cookie-settings-group', 'wp_oauth2_cookie_domain');
     }
 
     public function settings_page()
@@ -41,7 +42,10 @@ dashicons-admin-network');
             <p>
             <ol>
                 <li>Look for credentials or create these in OAuth 2 Server -> Clients.</li>
+                <li>Make sure that the Redirect URI is the form of http://domain.com/index.php?wp-oauth2-cookie=auth</li>
                 <li>Fill in the credentials from the chosen client that will be used for requesting access tokens.</li>
+                <li>Set the cookie domain to the top level domain of this host, <br/>
+                    E.g if wordpress resides in wp.osqledaren.se, then the cookie domain should be osqledaren.se</li>
             </ol>
             <form method="post" action="options.php">
                 <?php settings_fields('wp_oauth2_cookie-settings-group'); ?>
@@ -61,6 +65,11 @@ dashicons-admin-network');
                         <th scope="row">Client Secret</th>
                         <td><input type="text" name="wp_oauth2_cookie_client_secret"
                                    value="<?php echo esc_attr(get_option('wp_oauth2_cookie_client_secret')); ?>"/></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Cookie domain</th>
+                        <td><input type="text" name="wp_oauth2_cookie_domain"
+                                   value="<?php echo esc_attr(get_option('wp_oauth2_cookie_domain')); ?>"/></td>
                     </tr>
                 </table>
 

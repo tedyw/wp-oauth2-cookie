@@ -51,7 +51,7 @@ if(!$code) {
 
 
             // Set the cookie
-            setcookie($client_name, $auth_token, time() + 3600, '/', $_SERVER['HTTP_HOST'], 0, 0);
+            setcookie($client_name, $auth_token, time() + 3600, '/', '.' . get_option('wp_oauth2_cookie_domain'), 0, 0);
 
             // Save the cookie to user meta
             // Can be useful for debugging or if needed to refresh the cookie
